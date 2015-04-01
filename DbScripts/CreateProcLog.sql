@@ -8,6 +8,7 @@ CREATE PROCEDURE dbo.PR_LOG_MESSAGE(
         @LOGUSER VARCHAR(8000),
         @DOMAINE VARCHAR(8000),
         @MESSAGE_NUMBER  BIGINT,
+		@OTHERSINFOS VARCHAR(MAX),
         @LOG_MESSAGE  VARCHAR(MAX)
         )
 as
@@ -20,6 +21,7 @@ begin
            ,[LOGUSER]
            ,[DOMAINE]
            ,MESSAGE_NUMBER
+		   ,OTHERSINFOS
            ,[LOG_MESSAGE])
      VALUES
            (Getdate()
@@ -29,6 +31,7 @@ begin
            ,@LOGUSER
            ,@DOMAINE
            ,@MESSAGE_NUMBER
+		   ,@OTHERSINFOS
            ,@LOG_MESSAGE)
 end
 

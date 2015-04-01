@@ -106,6 +106,22 @@ namespace NS.Logs.DbConnexion
         }// end constructeur
 
 
+
+        /// 
+        /// <summary>
+        /// Constructeur: récupère la chaine de connexion et ouvre la connexion
+        /// </summary>
+        /// <param name="strConnectionString">Connection string version OleDb. Attention préciser le oledbprovider au début de la chaine</param>
+        public DBCnx(IDbConnection InMyConn)
+        // constructeur
+        {
+            MyConnectionString = MyConn.ConnectionString;
+            MyConn = InMyConn;
+            CreateCnxAndObjects();
+            MyConn.Dispose();
+
+        }// end constructeur
+
         #endregion
 
 

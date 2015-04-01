@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -41,7 +42,7 @@ namespace NS.Logs
         /// <param name="MonContexte">Contexte d'exécution</param>
         public override void SendMessage(LogLevel MonLevel, ILogMessage MonMessage, ILogContexte MonContexte)
         {
-            File.AppendAllText(LogFile, DateTime.Now.ToString() +  "::" +  ListLogLevel.GetName(MonLevel)  + "::" + MonContexte.Origin + "::" + MonContexte.Scope + "::" + MonContexte.CurrentUser + "::" +  MonMessage.TexteMessage + "\r\n");
+            File.AppendAllText(LogFile, DateTime.Now.ToString() +  "::" +  ListLogLevel.GetName(MonLevel)  + "::" + MonContexte.Origin + "::" + MonContexte.Scope + "::" + MonContexte.CurrentUser + "::" +  MonMessage.TexteMessage + " :: " + JsonConvert.SerializeObject(MonContexte.InfosComplementaires) +  "\r\n");
         }
 
 

@@ -28,6 +28,18 @@ namespace NS.Logs.DbConnexion
         }// end constructeur
 
 
+        /// <summary>
+        /// Constructeur: récupère la chaine de connexion et ouvre la connexion
+        /// </summary>
+        /// <param name="strConnectionString">Connection string version OleDb. Attention préciser le oledbprovider au début de la chaine</param>
+        public SqlCnx(SqlConnection MyConn)
+            : base(MyConn)
+        // constructeur
+        {
+            MonType = CnxType.CnxSqlServer;
+            
+        }// end constructeur
+
 
         /// <summary>
         /// Crée les objets Connection,AccessComanmd,DataAdapter typé en fonction de MonType

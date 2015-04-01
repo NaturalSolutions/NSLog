@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using NS.Logs.DbConnexion;
+using Newtonsoft.Json;
 
 namespace NS.Logs
 {
@@ -60,7 +61,10 @@ namespace NS.Logs
         /// <param name="MonContexte">Contexte d'exécution</param>
         public override void SendMessage(LogLevel MonLevel, ILogMessage MonMessage, ILogContexte MonContexte)
         {
-            _MyCon.SQL_Execute("PR_LOG_MESSAGE", "LOG_LEVEL", MonLevel, "Origin", MonContexte.Origin, "scope", MonContexte.Scope, "loguser", MonContexte.CurrentUser, "domaine", MonMessage.Domaine, "MESSAGE_NUMBER", MonMessage.NumMessage, "LOG_MESSAGE", MonMessage.TexteMessage);
+
+
+            _MyCon.SQL_Execute("PR_LOG_MESSAGE", "LOG_LEVEL", MonLevel, "Origin", MonContexte.Origin, "scope", MonContexte.Scope, "loguser", MonContexte.CurrentUser
+                , "domaine", MonMessage.Domaine, "MESSAGE_NUMBER", MonMessage.NumMessage, "LOG_MESSAGE", MonMessage.TexteMessage,"OTHERSINFOS",JsonConvert.SerializeObject(MonContexte.InfosComplementaires) );
 
             //throw new Exception("Not impemented Yet");
             //File.AppendAllText(LogFile, ListLogLevel.GetName(MonLevel)  + "::" + MonContexte.Origin + "::" + MonContexte.Scope + "::" +  MonMessage.TexteMessage + "\r\n");

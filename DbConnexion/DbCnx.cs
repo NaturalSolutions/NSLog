@@ -346,8 +346,27 @@ namespace NS.Logs.DbConnexion
 
 
 
-        
 
+        /// <summary>
+        /// Obtient un objet dictionnaire de string avec clef int depuis une requête
+        /// </summary>
+        /// <param name="strQuery">Requete à exécuter, celle-ci doit renvoyer au moins les 2 champ strColumnKeyName et strColumnValueName </param>
+        /// <param name="strColumnKeyName">champ clef du dictionnaire (doit être de type int)</param>
+        /// <param name="strColumnValueName">Champ valeur du dictionnaire</param>
+        /// <param name="args"></param>
+        /// <returns>Objet dictionnaire</returns>
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        public Dictionary<string, long> GetDicLongFromQuery(string strQuery, string strColumnKeyName, string strColumnValueName, params object[] args)
+        {
+
+            
+            DataTable MaTable = GetDataTableFromCnxWithArgs(strQuery, args);
+
+            return MaTable.AsEnumerable().ToDictionary(row => row[strColumnKeyName].ToString() ,
+                                                        row => long.Parse(row[strColumnValueName].ToString())
+                                                        );
+
+        }// end GetDicFromQuery
         
 
 

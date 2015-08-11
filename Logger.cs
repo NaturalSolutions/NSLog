@@ -235,7 +235,10 @@ namespace NS.Logs
             Dictionary<string, string> InfosComplementaires = new Dictionary<string, string>();
             InfosComplementaires.Add("StackTrace", Ex.StackTrace);
             InfosComplementaires.Add("TargetSite", Ex.TargetSite.Name);
-
+            if (Ex.InnerException != null)
+            {
+                InfosComplementaires.Add("InnerException", Ex.InnerException.Message);
+            }
             SendLog(ActualLevel, MonDomaine, Ex.Message, InfosComplementaires);
         }
 

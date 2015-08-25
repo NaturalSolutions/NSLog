@@ -55,6 +55,8 @@ namespace NS.Logs.DbConnexion
         /// 
         /// </summary>
         protected int _TimeOut;
+
+        protected IDbTransaction CurTran;
         #endregion
 
 
@@ -126,7 +128,7 @@ namespace NS.Logs.DbConnexion
 
 
         #region "Méthodes publiques"
-
+        
 
         #region "Méthode execution"
 
@@ -272,6 +274,7 @@ namespace NS.Logs.DbConnexion
             myDataAdapter.SelectCommand = myAccessCommand;
 
             myDataAdapter.Fill(MyDs);
+            myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
             MyConn.Dispose();
             return MyDs.Tables[0];
 
@@ -296,6 +299,7 @@ namespace NS.Logs.DbConnexion
             myDataAdapter.SelectCommand = myAccessCommand;
 
             myDataAdapter.Fill(MyDs);
+            myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
             MyConn.Dispose();
             return MyDs.Tables[0];
         }
@@ -435,6 +439,73 @@ namespace NS.Logs.DbConnexion
             MultipleExecInTran(ListInfo.ToArray(), -1);
         }// end MultipleExecInTran
 
+
+        public void StartTransaction() {
+            this.InitCommand();
+            CurTran = MyConn.BeginTransaction();
+            myAccessCommand.Transaction = CurTran;
+        }
+
+        public void CommitTransaction()
+        {
+            if (CurTran != null)
+            {
+
+                CurTran.Commit();
+            }
+            MyConn.Dispose() ;
+            
+        }
+
+        public void RollBackTransaction()
+        {
+            if (CurTran != null)
+            {
+                CurTran.Rollback();
+            }
+            MyConn.Dispose();
+
+        }
+
+
+        public object ExecuteScalarInTran(string strQuery, params object[] args)
+        {
+            object Retour;
+            try
+            {
+                FillParameters(args);
+                myAccessCommand.CommandText = strQuery;
+                //myAccessCommand.CommandType = CommandType.Text;
+
+                Retour = myAccessCommand.ExecuteScalar();
+            }
+            catch(Exception ex){
+                this.RollBackTransaction();
+                throw ex;
+            }
+            return Retour;
+        }
+
+        public object ExecuteScalarInTran(string strQuery, Dictionary<string,object> args)
+        {
+            object Retour;
+            try
+            {
+                FillParameters(args);
+                myAccessCommand.CommandText = strQuery;
+                //myAccessCommand.CommandType = CommandType.Text;
+
+                Retour = myAccessCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                this.RollBackTransaction();
+                throw ex;
+            }
+            return Retour;
+        }
+
+
         #endregion
 
 
@@ -501,6 +572,24 @@ namespace NS.Logs.DbConnexion
             }
         }
 
+
+        /// <summary>
+        /// Rempli myAccessCommand avec les paramètres passé en arguments
+        /// </summary>
+        /// <param name="args">indices impairs: nom du paramètre, indices pairs: valeur du paramètres</param>
+        protected void FillParameters(Dictionary<string,object> Args)
+        {
+            myAccessCommand.Parameters.Clear();
+
+            IDbDataParameter MonParam;
+            foreach (string curKey in Args.Keys)
+            {
+                MonParam = myAccessCommand.CreateParameter();
+                MonParam.ParameterName = curKey;
+                MonParam.Value = Args[curKey];
+                myAccessCommand.Parameters.Add(MonParam);
+            }
+        }
 
 
         /// <summary>

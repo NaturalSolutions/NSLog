@@ -41,6 +41,8 @@ namespace NS.Logs.DbConnexion
         }// end constructeur
 
 
+      
+
         /// <summary>
         /// Crée les objets Connection,AccessComanmd,DataAdapter typé en fonction de MonType
         /// </summary>
@@ -62,7 +64,7 @@ namespace NS.Logs.DbConnexion
         /// <returns></returns>
         public DataTable GetDataTableFromPS(string strPS, params object[] args)
         {
-
+            
             InitCommand();
 
             DataSet MyDs = new DataSet();

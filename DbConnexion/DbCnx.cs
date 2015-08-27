@@ -89,6 +89,8 @@ namespace NS.Logs.DbConnexion
             }
         }
 
+
+        public bool QueryWithSchema = false;
         #endregion
 
         #region "Constructeurs"
@@ -274,7 +276,10 @@ namespace NS.Logs.DbConnexion
             myDataAdapter.SelectCommand = myAccessCommand;
 
             myDataAdapter.Fill(MyDs);
-            myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
+            if (this.QueryWithSchema)
+            {
+                myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
+            }
             MyConn.Dispose();
             return MyDs.Tables[0];
 
@@ -299,7 +304,10 @@ namespace NS.Logs.DbConnexion
             myDataAdapter.SelectCommand = myAccessCommand;
 
             myDataAdapter.Fill(MyDs);
-            myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
+            if (this.QueryWithSchema)
+            {
+                myDataAdapter.FillSchema(MyDs, System.Data.SchemaType.Mapped);
+            }
             MyConn.Dispose();
             return MyDs.Tables[0];
         }

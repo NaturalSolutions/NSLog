@@ -3,9 +3,11 @@
 var Marionette = require('backbone.marionette');
 var router = require('./router');
 var session = require('../main/session');
-var main = require('../main/main.view');
-var Login = require('../user/login.view');
+var Main = require('../main/main.view');
 
+var logGrid = require('../log/loggrid.view');
+var logForm = require('../log/logform.view');//require('../log/logform.view');
+var $ = require('jquery');
 
 module.exports = Marionette.Object.extend({
     initialize: function(options) {},
@@ -22,12 +24,34 @@ module.exports = Marionette.Object.extend({
 
     logoutAction: function() {
         session.close();
-        this.goToLogin();
+       
     },
 
     loginAction: function() {
-        main.getInstance().rgMain.show(new Login(), {
+        
+    },
+	loggrid: function() {
+		console.log('LogGrid') ;
+		var Mymain = Main.getInstance() ;
+		//console.log(Mymain) ;
+        var curlogGrid = new logGrid() ;
+        curlogGrid.render() ;
+        Mymain.rgMain.show(curlogGrid, {
             preventDestroy: true
         });
+        
+    },
+    logform: function(id) {
+        console.log('LogGrid') ;
+        var Mymain = Main.getInstance() ;
+        //console.log(Mymain) ;
+        var curlogForm = new logForm({id:id}) ;
+        curlogForm.render() ;
+        
+        Mymain.rgMain.show(curlogForm, {
+            preventDestroy: true
+        });
+        
     }
+
 });

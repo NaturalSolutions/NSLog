@@ -5,6 +5,7 @@ var _ = require('lodash');
 var $ = require('jquery');
 
 var Region = Marionette.Region.extend({
+    
     attachHtml: function(view) {
         //TODO: another place for that ?
         if ( this.$el.children('div').length && this.currentView ) {
@@ -18,8 +19,8 @@ var Region = Marionette.Region.extend({
                 }
             });
             $last.addClass('animate animate-close');
-        } else
-            $('body').alterClass('section-*', 'section-'+ view.name);
+        } //else
+          //  $('body').alterClass('section-*', 'section-'+ view.name);
 
         this.$el.prepend(view.el);
     }

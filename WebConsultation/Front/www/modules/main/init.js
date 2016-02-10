@@ -4,12 +4,12 @@ var Backbone = require('backbone');
 var Marionette = require('../../vendor/marionette-shim');
 var $ = require('jquery');
 var bootstrap = require('bootstrap');
-var main = require('./main.view');
+var Main = require('./main.view');
 var session = require('./session');
 var NsForm = require('../../vendor/NaturalJS-Form/NsFormsModule') ;
 function init() {
 
-	console.log(' NsForm', NsForm) ;
+	var main = null;
     $('html').addClass(document.ontouchstart === undefined ? 'notouch' : 'touch');
 
     // Global intercept of AJAX error
@@ -33,7 +33,11 @@ function init() {
         app = new Marionette.Application();
 
     app.on('start', function() {
-        main.render();
+		//console.log('Start');
+        main = Main.getInstance();
+        main.render() ;
+        console.log('main.el html',main.$el,main.$el.html());
+        //$('body').html(main.$el) ;
         Backbone.history.start();
     });
 

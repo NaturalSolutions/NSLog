@@ -1,0 +1,44 @@
+
+button{
+    overflow: hidden;
+    background: @c-main;
+    color: white;
+    border: none;
+    padding: 0px;
+    margin-right:15px;
+    vertical-align: middle;
+    border-radius: 3px;
+    text-transform: uppercase;
+    &:hover{
+        background: @c-main;
+        color: white!important;
+    }
+    &:focus{
+        background: @c-main;
+        color: white!important;
+    }
+
+    @fz: 20px;
+    @padding : 20px;
+    i{
+        line-height: inherit;
+        font-size: inherit!important;
+        background: rgba(0,0,0,0.2);
+        padding: @padding 15px;
+        margin:0px!important;
+        display: block;
+        float: left;
+        font-size: @fz!important;
+        line-height: 0px!important;
+    }
+    span{
+        line-height: 10px;
+        margin: 0px!important;
+        display: block;
+        float: left;
+        padding: @padding 15px;
+        font-size: @fz!important;
+        line-height: 0px!important;
+    }
+
+}

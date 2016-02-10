@@ -1,2 +1,5 @@
 APIDotNetLog/bin
 APIDotNetLog/obj
+WebConsultation/Back/development.ini
+WebConsultation/Back/nslogdisplay.egg-info
+*.pyc

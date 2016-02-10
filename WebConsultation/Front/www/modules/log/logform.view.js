@@ -9,6 +9,7 @@ var Marionette = require('../../vendor/marionette-shim'),
     BackboneForm = require('backbone-forms');
     var $ = require('jquery');
     var Tpl = require('./but.tpl.html');
+    
 var Layout = Marionette.LayoutView.extend({
     name: 'LogForm',
     header: 'none',
@@ -18,13 +19,23 @@ var Layout = Marionette.LayoutView.extend({
     initialize: function (options) {
             Marionette.LayoutView.prototype.initialize.call(this, options);
             this.id = options.id ;
+            var schema =  {
+                ID:{'type':'Number','title':'ID','name':'ID'},
+                JCRE:{'type':'Text','title':'JCre','name':'JCRE',options:{isInterval:true}},
+                ORIGIN:{'type':'Text','title':'Origin','name':'ORIGIN'},
+                USER:{'type':'Text','title':'LogUser','name':'USER'},
+                MESSAGE_NUMBER:{'type':'Number','title':'MESSAGE_NUMBER','name':'MESSAGE_NUMBER'},
+                LOG_MESSAGE:{'type':'Text','title':'Message','name':'LOG_MESSAGE'}
+            }
+
+
             this.nsform = new NsForm({
                 name: 'logForm',
-                modelurl: 'http://localhost:6570/logdisplay-core/log/',
+                modelurl: 'http://localhost:6570/logdisplay-core/log',
                 formRegion: 'LogForm',
                 displayMode: 'Display',
-                id: this.id
-                //schema : 
+                id: this.id,
+                schema : schema
             }) ;
         },
         onRender: function () {

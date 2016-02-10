@@ -19,9 +19,11 @@ var Marionette = require('../../vendor/marionette-shim'),
     className: 'LogGrid',
     events: {
         'click #update': 'update',
-        'click #Clear': 'clear'
+        'click #Clear': 'clear',
+        //'click tr': 'rowClicked',
+        'dblclick tr': 'rowDblClicked'
     },
-    initialize: function (options) {
+        initialize: function (options) {
             Marionette.LayoutView.prototype.initialize.call(this, options);
             this.com = new NsCom();
             var filter = [];
@@ -40,14 +42,13 @@ var Marionette = require('../../vendor/marionette-shim'),
             this.grid = new NsGrid ({
             	name:'logGrid',
             	url:'http://localhost:6570/logdisplay-core/log',
-            	pageSize:30,
+            	pageSize:10,
             	pagingServerSide: true,
                 totalElement: 'NbElements',
                 filterCriteria: filter,
                 com: this.com,
                 columns:columns
             });
-
 
             //console.log('initialize',this,this.template);
         },
@@ -77,15 +78,15 @@ var Marionette = require('../../vendor/marionette-shim'),
             //this.createFilters();
             this.update();
         },
-        createFilters() {
+        createFilters:function() {
 
             var myfilters = [
-                {'type':'Number','title':'ID','ID':'toto'},
-                {'type':'Text','title':'JCRE','name':'Jcre'},
-                {'type':'Text','title':'ORIGIN','name':'Origin'},
-                {'type':'Text','title':'LOGUSER','name':'User'},
-                {'type':'Number','title':'MESSAGE_NUMBER','name':'Message Number'},
-                {'type':'Text','title':'LOG_MESSAGE','name':'Message'}
+                {'type':'Number','title':'ID','name':'ID'},
+                {'type':'Text','title':'JCre','name':'JCRE',options:{isInterval:true}},
+                {'type':'Text','title':'Origin','name':'ORIGIN'},
+                {'type':'Text','title':'LogUser','name':'USER'},
+                {'type':'Number','title':'MESSAGE_NUMBER','name':'MESSAGE_NUMBER'},
+                {'type':'Text','title':'Message','name':'LOG_MESSAGE'}
             ];
 
             this.filter = new NsFilter ({
@@ -97,7 +98,18 @@ var Marionette = require('../../vendor/marionette-shim'),
         },
         onShow:function() {
            this.createFilters() ;
-        }
+        },
+        rowDblClicked: function (e) {
+                var nId = -1;
+                // get the index of ID if exists
+               var routeur = require('../routing/router');
+               routeur.navigate('#logForm/' + $(e.currentTarget).children().eq(0).text(), {trigger: true});
+                //window.location.href = this.getBaseURL() + '#logForm/' + $(e.currentTarget).children().eq(0).text();
+        },
+        getBaseURL: function () {
+            return window.location.origin + window.location.pathname;
+
+        },
 });
 
 module.exports = Layout;

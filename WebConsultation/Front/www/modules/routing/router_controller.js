@@ -36,21 +36,17 @@ module.exports = Marionette.Object.extend({
 		//console.log(Mymain) ;
         var curlogGrid = new logGrid() ;
         curlogGrid.render() ;
-        Mymain.rgMain.show(curlogGrid, {
-            preventDestroy: true
-        });
+        Mymain.rgMain.show(curlogGrid);
         
     },
     logform: function(id) {
-        console.log('LogGrid') ;
+        console.log('LogForm') ;
         var Mymain = Main.getInstance() ;
         //console.log(Mymain) ;
         var curlogForm = new logForm({id:id}) ;
         curlogForm.render() ;
         
-        Mymain.rgMain.show(curlogForm, {
-            preventDestroy: true
-        });
+        Mymain.rgMain.show(curlogForm);
         
     }
 

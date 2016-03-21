@@ -25,8 +25,8 @@ var Layout = Marionette.LayoutView.extend({
                 ORIGIN:{'type':'Text','title':'Origin','name':'ORIGIN'},
                 USER:{'type':'Text','title':'LogUser','name':'USER'},
                 MESSAGE_NUMBER:{'type':'Number','title':'MESSAGE_NUMBER','name':'MESSAGE_NUMBER'},
-                LOG_MESSAGE:{'type':'Text','title':'Message','name':'LOG_MESSAGE'}
-            }
+                LOG_MESSAGE:{'type':'TextArea','title':'Message','name':'LOG_MESSAGE'}
+            };
 
 
             this.nsform = new NsForm({

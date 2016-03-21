@@ -4,7 +4,7 @@ var Marionette = require('backbone.marionette');
 
 var Router = Marionette.AppRouter.extend({
     appRoutes: {
-        '': 'indexAction',
+        '': 'loggrid',
         'login': 'loginAction',
         'logout': 'logoutAction',
 		'logGrid': 'loggrid',

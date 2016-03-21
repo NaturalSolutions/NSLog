@@ -42,7 +42,7 @@ var Marionette = require('../../vendor/marionette-shim'),
             this.grid = new NsGrid ({
             	name:'logGrid',
             	url:'http://localhost:6570/logdisplay-core/log',
-            	pageSize:10,
+            	pageSize:25,
             	pagingServerSide: true,
                 totalElement: 'NbElements',
                 filterCriteria: filter,

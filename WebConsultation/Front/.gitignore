@@ -4,6 +4,7 @@ node_modules
 www/index.js
 www/style.css
 www/style.css.map
+www/vendor
 tests/test-suite.js
 .DS_Store
 npm-debug.log

@@ -31,7 +31,7 @@ var Layout = Marionette.LayoutView.extend({
 
             this.nsform = new NsForm({
                 name: 'logForm',
-                modelurl: 'http://localhost:6570/logdisplay-core/log',
+                modelurl: 'http://localhost:6544/logdisplay-core/log',
                 formRegion: 'LogForm',
                 displayMode: 'Display',
                 id: this.id,

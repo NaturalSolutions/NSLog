@@ -1,36 +1,66 @@
-﻿
-table tbody tr.selected {
-    background: #565353;
-    color: #FFFFFF;
-}
+﻿/*PIER*/
+div.LogGrid{
+    
+    div.zone{
+        padding-top: 33px;
+        overflow: auto;
+        background-color: @colorLog;        
+        height: calc(~"100% - 100px");
+        
+        div.paginator{
+            background-color: @colorLog;
+            text-align: center;
+            padding-top: 30px;
+            a {
+                color: #979797;
+                font-size: 20px;
+                &:hover{
+                    color: #fff;                
+                    text-decoration: none;
+                }
+            }            
+        }
+    }
 
-.backgrid td, .backgrid th {
-    border: 0;
-}
+    div.ns-actions{
+        float: left;
+    }
 
-.backgrid > thead > tr {
-    border: 0;
-}
+    table.backgrid {
+             
+        tbody tr{            
+            &:hover{
+                background-color: rgba(0,0,0,0.1);
+                cursor: pointer;
+            } 
+        }
+        th {
+            background-color: inherit;
+            text-align: left;        
+        }
+    }
 
-.backgrid > tbody > tr:first-of-type td {
-    padding-top: 12px;
-}
+    div.ns-footer{        
+        background-color: @colorLog;
+        position: relative;
+        height: 100px;               
+        padding-bottom: 10px;
+        padding-top: 30px;
+    }
+    
+    /* Large devices (large desktops, 1200px and up) */
+    @media (max-width: @screen-lg-min) { 
+        
+        height: auto;
+        div.ns-footer{            
+            padding-left: 29px;
+            padding-bottom: 30px;
+        }
+        div.zone {
+            padding-bottom: 45px;
+        }
 
 
-#grid {
-    height: calc(~"100% - 180px");
-    overflow: auto;
-}
+    }
 
-
-.backgrid-paginator a {
-    color: #979797;
-}
-
-.backgrid-paginator ul {
-    margin-top:10px ;
-}
-.backgrid th {
-    background-color: inherit !important;
-    text-align: left;
-}
+} /* fin LogGrid */

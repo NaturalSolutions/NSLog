@@ -20,8 +20,8 @@
 }
 
 body, html {
-  position: absolute;
-  width: 100%;
+  /* position: absolute; */
+  /* width: 100%; */
   height: 100%;
   @media (min-width: @screen-md-min) {
     background: @gray-lighter;
@@ -272,19 +272,16 @@ form {
   }
 }
 
-.ns-footer {
-    
-}
+
 .filtre {
       height: calc(~"100% - 130px");
 }
 
 .app{
-  height: 100%;
-
+  height: calc(~"100% - 80px");
 }
 .app main{
-  height: calc(~"100% - 80px");
+  height: 100%;
 }
 
 .header {
@@ -296,9 +293,4 @@ form {
   .ns-fit{
     height: 100%;
   }
-}
-.ns-footer{
-  position: absolute;
-  bottom: 38px;
-  left: 29px;
 }

@@ -74,6 +74,14 @@ namespace NS.Logs.DbConnexion
             }
         }
 
+
+        public string ConnectionString
+        {
+            get
+            {
+                return MyConnectionString;
+            }
+        }
         /// <summary>
         /// Definit le timeout des commandes, si valeur inférieure à 0 timeout par défaut
         /// </summary>

@@ -45,7 +45,7 @@ namespace NS.Logs
             : base(InName)
         {
 
-            ConnectionString = InMyConnn.zeConn.ConnectionString;
+            ConnectionString = InMyConnn.ConnectionString;
             _MyCon = InMyConnn;
 
         }// end constructeur
@@ -63,7 +63,7 @@ namespace NS.Logs
         {
 
 
-            DBCnx curCon = DbCnxManager.CreateConnectionFromConnectingString(ConnectionString);
+            DBCnx curCon = new SqlCnx(ConnectionString);
 
             curCon.SQL_Execute("PR_LOG_MESSAGE", "@LOG_LEVEL", MonLevel, "@Origin", MonContexte.Origin, "@scope", MonContexte.Scope, "@loguser", MonContexte.CurrentUser
                 , "@domaine", MonMessage.Domaine, "@MESSAGE_NUMBER", MonMessage.NumMessage, "@LOG_MESSAGE", MonMessage.TexteMessage, "@OTHERSINFOS", JsonConvert.SerializeObject(MonContexte.InfosComplementaires));

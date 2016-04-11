@@ -36,6 +36,7 @@ namespace NS.Logs.DbConnexion
             : base(MyConn)
         // constructeur
         {
+            this.MyConnectionString = MyConn.ConnectionString;
             MonType = CnxType.CnxSqlServer;
             
         }// end constructeur

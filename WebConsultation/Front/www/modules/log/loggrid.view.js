@@ -8,8 +8,9 @@ var Marionette = require('../../vendor/marionette-shim'),
     NsCom = require('../../vendor/NaturalJS-Com/ns_com'),
     LogModel = require('./log.model'),
     Backbone = require('backbone');
-
+    require('../../vendor/NaturalJS-BackBone-Forms-Editors/DateTimePicker/backboneForm-editors-dateTimePicker');
     var $ = require('jquery');
+    var config = require('../main/config');
     Backbone.$ = $ ;
     console.log('LayoutGrid',Layout);
     var Layout = Marionette.LayoutView.extend({
@@ -39,14 +40,20 @@ var Marionette = require('../../vendor/marionette-shim'),
                             {"name":"LOG_MESSAGE","label":"Message Message","cell":"String","renderable":true,"editable":"false","type":"String","displayFormat":"","options":null}
             				];
 
+
+
+            // TODO Gestion conservation des filtres et sort
+            var sort = { 'ID': 'desc'};
+
             this.grid = new NsGrid ({
             	name:'logGrid',
-            	url:'http://localhost:6544/logdisplay-core/log',
+            	url: config.serverUrl + 'logdisplay-core/log',
             	pageSize:25,
             	pagingServerSide: true,
                 totalElement: 'NbElements',
                 filterCriteria: filter,
                 com: this.com,
+                sortCriteria: sort,
                 columns:columns
             });
 
@@ -82,7 +89,7 @@ var Marionette = require('../../vendor/marionette-shim'),
 
             var myfilters = [
                 {'type':'Number','title':'ID','name':'ID'},
-                {'type':'Text','title':'JCre','name':'JCRE',options:{isInterval:true}},
+                {'type':'DateTimePickerEditor','title':'JCre','name':'JCRE',options:{isInterval:true}},
                 {'type':'Text','title':'Origin','name':'ORIGIN'},
                 {'type':'Text','title':'LogUser','name':'USER'},
                 {'type':'Number','title':'MESSAGE_NUMBER','name':'MESSAGE_NUMBER'},

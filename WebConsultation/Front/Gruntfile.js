@@ -102,7 +102,7 @@ module.exports = function(grunt) {
         copy: {
             fonts: {
                 expand: true,
-                src: ['./node_modules/bootstrap/fonts/*'],
+                src: ['./node_modules/bootstrap/fonts/*','./node_modules/Reneco-fonts/fonts/*'],
                 dest: 'www/fonts/',
                 filter: 'isFile',
                 flatten: true

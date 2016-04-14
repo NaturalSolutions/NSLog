@@ -43,6 +43,7 @@
     "backgrid-paginator": "^0.3.7",
     "backgrid-select-all": "~0.3.5",
     "bootstrap": "^3.3.5",
+    "eonasdan-bootstrap-datetimepicker": "^4.15.35",
     "brfs": "^1.4.2",
     "browserify-fs": "^1.0.0",
     "browserify-shim": "^3.8.9",

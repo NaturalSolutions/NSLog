@@ -9,7 +9,8 @@ var Marionette = require('../../vendor/marionette-shim'),
     BackboneForm = require('backbone-forms');
     var $ = require('jquery');
     var Tpl = require('./but.tpl.html');
-    
+    var config = require('../main/config');
+
 var Layout = Marionette.LayoutView.extend({
     name: 'LogForm',
     header: 'none',
@@ -31,7 +32,7 @@ var Layout = Marionette.LayoutView.extend({
 
             this.nsform = new NsForm({
                 name: 'logForm',
-                modelurl: 'http://localhost:6544/logdisplay-core/log',
+                modelurl: config.serverUrl +'logdisplay-core/log',
                 formRegion: 'LogForm',
                 displayMode: 'Display',
                 id: this.id,

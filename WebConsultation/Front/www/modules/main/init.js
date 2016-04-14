@@ -7,6 +7,9 @@ var bootstrap = require('bootstrap');
 var Main = require('./main.view');
 var session = require('./session');
 var NsForm = require('../../vendor/NaturalJS-Form/NsFormsModule') ;
+var datetimepicker = require('eonasdan-bootstrap-datetimepicker');
+
+
 function init() {
 
 	var main = null;
@@ -28,6 +31,7 @@ function init() {
     Backbone.Marionette.Renderer.render = function(template, data) {
         return template(data);
     };
+
 
     var dfdSession,
         app = new Marionette.Application();

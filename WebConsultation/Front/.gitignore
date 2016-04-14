@@ -8,4 +8,5 @@ www/vendor
 tests/test-suite.js
 .DS_Store
 npm-debug.log
+config.js
 *~

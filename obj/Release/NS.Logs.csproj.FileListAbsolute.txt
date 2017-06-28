@@ -1,0 +1,7 @@
+D:\inetpub\wwwroot\NSLog\bin\Release\NS.Logs.dll.config
+D:\inetpub\wwwroot\NSLog\bin\Release\NS.Logs.dll
+D:\inetpub\wwwroot\NSLog\bin\Release\NS.Logs.pdb
+D:\inetpub\wwwroot\NSLog\bin\Release\Newtonsoft.Json.dll
+D:\inetpub\wwwroot\NSLog\obj\Release\NS.Logs.dll
+D:\inetpub\wwwroot\NSLog\obj\Release\NS.Logs.pdb
+D:\inetpub\wwwroot\NSLog\obj\Release\NS.Logs.csprojResolveAssemblyReference.cache

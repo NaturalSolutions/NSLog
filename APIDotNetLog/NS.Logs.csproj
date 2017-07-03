@@ -30,20 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD:NS.Logs.csproj
+    
     <Reference Include="EntityFramework">
       <HintPath>..\NSConsoleAdministration_New\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\NSConsoleAdministration_New\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
-=======
+      
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
->>>>>>> e6e13dc17de05e7e1b70ea5c69b02a4fe8c39d6a:APIDotNetLog/NS.Logs.csproj
+      
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,14 +75,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD:NS.Logs.csproj
     <None Include="App.config" />
-=======
     <Content Include="DbScripts\CreateProcLog.sql" />
     <Content Include="DbScripts\CreateTableLog.sql" />
   </ItemGroup>
   <ItemGroup>
->>>>>>> e6e13dc17de05e7e1b70ea5c69b02a4fe8c39d6a:APIDotNetLog/NS.Logs.csproj
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

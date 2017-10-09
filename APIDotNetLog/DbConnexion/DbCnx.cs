@@ -583,6 +583,11 @@ namespace NS.Logs.DbConnexion
             {
                 MonParam = myAccessCommand.CreateParameter();
                 MonParam.ParameterName = (string)args[i];
+                /*
+                 * if (args.Length < i + 2)
+                    MonParam.Value = "NULL";
+                else
+                 * */
                 MonParam.Value = args[i + 1];
                 myAccessCommand.Parameters.Add(MonParam);
             }

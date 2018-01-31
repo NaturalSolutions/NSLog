@@ -143,6 +143,7 @@ namespace NS.Logs
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Exception caugh : " + ex);
             }
         }
         protected ILogContexte CreateContexte(ILogMessage msg, Dictionary<string, string> InInfosComplementaires)
